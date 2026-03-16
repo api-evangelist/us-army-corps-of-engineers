@@ -21,7 +21,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-21'
-modified: '2025-01-04'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   The US Army Corps of Engineers is a federal agency that plays a critical role
@@ -37,5 +37,5 @@ description: >-
   of our nation.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
