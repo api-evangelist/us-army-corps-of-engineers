@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: us-army-corps-of-engineers:us-army-corps-of-engineers
     name: US Army Corps of Engineers
-    tags:
-      - API
+    tags: []
     humanURL: https://www.usace.army.mil
     properties:
       - url: https://www.usace.army.mil
