@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-location-schema.json",
+  "title": "USACE CWMS Location",
+  "description": "Schema for a CWMS monitored location (stream gage, reservoir, weather station)",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Location identifier",
+      "example": "TULSA"
+    },
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "WGS84 latitude in decimal degrees"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "WGS84 longitude in decimal degrees"
+    },
+    "elevation": {
+      "type": ["number", "null"],
+      "description": "Location elevation (unit depends on unit parameter)"
+    },
+    "vertical-datum": {
+      "type": "string",
+      "enum": ["NGVD29", "NAVD88", "LOCAL"],
+      "description": "Vertical datum for elevation"
+    },
+    "horizontal-datum": {
+      "type": "string",
+      "description": "Horizontal datum for coordinates",
+      "example": "WGS84"
+    },
+    "public-name": {
+      "type": ["string", "null"],
+      "description": "Public display name for the location"
+    },
+    "long-name": {
+      "type": ["string", "null"],
+      "description": "Full descriptive name"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Additional description"
+    },
+    "kind": {
+      "type": "string",
+      "description": "Location kind",
+      "enum": ["SITE", "STREAM", "STREAM_LOCATION", "RESERVOIR", "BASIN", "WEATHER_STATION", "LOCK"]
+    },
+    "type": {
+      "type": ["string", "null"],
+      "description": "Location type classification"
+    },
+    "time-zone-name": {
+      "type": "string",
+      "description": "IANA time zone identifier",
+      "example": "US/Central"
+    },
+    "county-name": {
+      "type": ["string", "null"],
+      "description": "County name where location resides"
+    },
+    "state-initial": {
+      "type": "string",
+      "description": "Two-letter state abbreviation",
+      "example": "OK"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the location is actively monitored"
+    },
+    "office-id": {
+      "type": "string",
+      "description": "USACE district office that owns this location"
+    }
+  },
+  "required": ["name", "latitude", "longitude", "active", "office-id"]
+}

@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cwms-data.usace.army.mil/cwms-data/timeseries",
+    "parameters": {
+      "name": "TULA.Flow.Inst.1Hour.0.CBT-RAW",
+      "office": "SWT",
+      "unit": "cfs",
+      "begin": "2025-01-01T00:00:00Z",
+      "end": "2025-01-07T00:00:00Z",
+      "timezone": "UTC",
+      "format": "json",
+      "page-size": 168
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "name": "TULA.Flow.Inst.1Hour.0.CBT-RAW",
+      "office-id": "SWT",
+      "units": "cfs",
+      "begin": "2025-01-01T00:00:00Z",
+      "end": "2025-01-07T00:00:00Z",
+      "values": [
+        [1735689600000, 1240.5, 0],
+        [1735693200000, 1235.0, 0],
+        [1735696800000, 1228.3, 0],
+        [1735700400000, 1220.1, 0],
+        [1735704000000, 1215.8, 0]
+      ],
+      "page": null,
+      "next-page": "eyJuYW1lIjoiVFVMQS5GbG93Lkluc3QuMUhvdXIuMC5DQlQtUkFXIiwib2ZmaWNlLWlkIjoiU1dUIiwidW5pdHMiOiJjZnMiLCJiZWdpbiI6IjIwMjUtMDEtMDZUMTg6MDA6MDBaIiwiZW5kIjoiMjAyNS0wMS0wN1QwMDowMDowMFoifQ=="
+    }
+  }
+}

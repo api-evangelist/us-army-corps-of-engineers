@@ -1,0 +1,57 @@
+{
+  "name": "USACE CWMS Timeseries",
+  "description": "Structure documentation for CWMS timeseries response data",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Timeseries ID (location.parameter.type.interval.duration.version)"
+    },
+    {
+      "name": "office-id",
+      "type": "string",
+      "required": true,
+      "description": "USACE district office identifier"
+    },
+    {
+      "name": "units",
+      "type": "string",
+      "required": true,
+      "description": "Unit of measure (e.g., cfs, ft, in)"
+    },
+    {
+      "name": "begin",
+      "type": "string (date-time)",
+      "required": false,
+      "description": "Start time of returned data"
+    },
+    {
+      "name": "end",
+      "type": "string (date-time)",
+      "required": false,
+      "description": "End time of returned data"
+    },
+    {
+      "name": "values",
+      "type": "array<array>",
+      "required": true,
+      "description": "Array of [timestamp-ms, value, quality-code] tuples",
+      "items": {
+        "description": "Tuple: [Unix timestamp ms, numeric value or null, quality code integer]"
+      }
+    },
+    {
+      "name": "page",
+      "type": "string (nullable)",
+      "required": false,
+      "description": "Current page cursor"
+    },
+    {
+      "name": "next-page",
+      "type": "string (nullable)",
+      "required": false,
+      "description": "Next page cursor for pagination"
+    }
+  ]
+}

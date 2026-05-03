@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cwms-data.usace.army.mil/cwms-data/locations",
+    "parameters": {
+      "office": "SWT",
+      "unit": "EN",
+      "page-size": 10
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "page": null,
+      "next-page": "eyJvZmZpY2UiOiJTV1QiLCJuYW1lcyI6bnVsbCwidW5pdCI6IkVOIiwibGFzdC1uYW1lIjoiQURLSU5TIn0=",
+      "total": 1843,
+      "page-size": 10,
+      "locations": {
+        "location": [
+          {
+            "name": "TULSA",
+            "latitude": 36.1539,
+            "longitude": -95.9928,
+            "elevation": 674.0,
+            "vertical-datum": "NGVD29",
+            "horizontal-datum": "WGS84",
+            "public-name": "Tulsa, OK",
+            "long-name": "Tulsa Oklahoma River Station",
+            "description": "USGS stream gage near Tulsa Oklahoma",
+            "kind": "STREAM_LOCATION",
+            "type": "STREAM",
+            "time-zone-name": "US/Central",
+            "county-name": "Tulsa",
+            "state-initial": "OK",
+            "active": true,
+            "office-id": "SWT"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "hydro": "http://www.opengeospatial.org/standards/waterml",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "usace": "https://www.usace.army.mil/vocab/",
+
+    "GovernmentOrganization": "GovernmentOrganization",
+    "Dataset": "http://www.w3.org/ns/dcat#Dataset",
+    "Place": "Place",
+
+    "name": "name",
+    "description": "description",
+    "officeId": "usace:officeId",
+    "units": "usace:units",
+    "begin": {
+      "@id": "dct:created",
+      "@type": "xsd:dateTime"
+    },
+    "end": {
+      "@id": "dct:modified",
+      "@type": "xsd:dateTime"
+    },
+    "values": "usace:timeseriesValues",
+    "latitude": "geo:lat",
+    "longitude": "geo:long",
+    "elevation": "geo:alt",
+    "verticalDatum": "usace:verticalDatum",
+    "horizontalDatum": "usace:horizontalDatum",
+    "publicName": "name",
+    "longName": "description",
+    "kind": "usace:locationKind",
+    "timeZoneName": "usace:timeZone",
+    "countyName": "usace:county",
+    "stateInitial": "usace:state",
+    "active": "usace:isActive",
+
+    "Timeseries": "usace:Timeseries",
+    "Location": "usace:Location",
+    "StreamLocation": "usace:StreamLocation",
+    "Reservoir": "usace:Reservoir",
+    "RatingTable": "usace:RatingTable",
+    "LocationLevel": "usace:LocationLevel",
+    "Office": "usace:Office",
+    "WaterManagementData": "usace:WaterManagementData",
+
+    "USACE": {
+      "@id": "usace:USACE",
+      "@type": "GovernmentOrganization"
+    },
+
+    "FloodStage": "usace:FloodStageLevel",
+    "ConservationPool": "usace:ConservationPoolLevel",
+    "FloodControl": "usace:FloodControlPool"
+  }
+}

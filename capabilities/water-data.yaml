@@ -1,0 +1,277 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USACE Water Data"
+  description: >-
+    Unified water data capability composing USACE CWMS Data API resources for water resource
+    monitoring, flood forecasting, reservoir operations, and hydrological analysis. Used by
+    water managers, flood forecasters, environmental engineers, and researchers accessing
+    USACE real-time and historical water data.
+  tags:
+    - Water Resources
+    - Federal Government
+    - Flood Forecasting
+    - Reservoir Operations
+    - Hydrological Data
+    - Open Data
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+capability:
+  consumes:
+    - import: cwms-data
+      location: ./shared/cwms-data.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: water-data-api
+      description: "Unified REST API for USACE water management data access."
+      resources:
+        - path: /v1/timeseries
+          name: timeseries
+          description: "Water management timeseries data (streamflow, stage, precipitation)"
+          operations:
+            - method: GET
+              name: get-timeseries
+              description: "Get timeseries values for a monitored location and parameter"
+              call: "cwms-data.get-timeseries"
+              with:
+                name: "rest.name"
+                office: "rest.office"
+                unit: "rest.unit"
+                begin: "rest.begin"
+                end: "rest.end"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/timeseries/catalog
+          name: timeseries-catalog
+          description: "Catalog of available timeseries identifiers"
+          operations:
+            - method: GET
+              name: list-timeseries
+              description: "List available CWMS timeseries identifiers"
+              call: "cwms-data.get-timeseries-catalog"
+              with:
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/locations
+          name: locations
+          description: "CWMS monitored locations"
+          operations:
+            - method: GET
+              name: list-locations
+              description: "List monitored water resource locations"
+              call: "cwms-data.get-locations"
+              with:
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/locations/{location-id}
+          name: location
+          description: "Single monitored location details"
+          operations:
+            - method: GET
+              name: get-location
+              description: "Get details for a specific monitored location"
+              call: "cwms-data.get-location"
+              with:
+                location-id: "rest.location-id"
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/ratings
+          name: ratings
+          description: "Stage-to-flow rating tables"
+          operations:
+            - method: GET
+              name: list-ratings
+              description: "Retrieve rating tables for value conversion"
+              call: "cwms-data.get-ratings"
+              with:
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/levels
+          name: levels
+          description: "Location level thresholds"
+          operations:
+            - method: GET
+              name: list-levels
+              description: "Get stage and elevation threshold levels"
+              call: "cwms-data.get-levels"
+              with:
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/reservoirs
+          name: reservoirs
+          description: "USACE reservoir projects"
+          operations:
+            - method: GET
+              name: list-reservoirs
+              description: "List USACE reservoir projects and pool data"
+              call: "cwms-data.get-reservoirs"
+              with:
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/offices
+          name: offices
+          description: "USACE district offices"
+          operations:
+            - method: GET
+              name: list-offices
+              description: "List all USACE district offices"
+              call: "cwms-data.get-offices"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/catalog/{dataset}
+          name: catalog
+          description: "Data catalog by dataset type"
+          operations:
+            - method: GET
+              name: get-catalog
+              description: "Get catalog of available data by dataset type"
+              call: "cwms-data.get-catalog"
+              with:
+                dataset: "rest.dataset"
+                office: "rest.office"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: water-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted USACE water resource data access and analysis."
+      tools:
+        - name: get-streamflow-data
+          description: "Retrieve real-time or historical streamflow timeseries data for a CWMS location"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-timeseries"
+          with:
+            name: "tools.name"
+            office: "tools.office"
+            unit: "tools.unit"
+            begin: "tools.begin"
+            end: "tools.end"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-timeseries
+          description: "List available CWMS timeseries identifiers for a given office"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-timeseries-catalog"
+          with:
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-locations
+          description: "List CWMS monitored locations (stream gages, reservoirs, weather stations)"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-locations"
+          with:
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-location-details
+          description: "Get detailed information for a specific CWMS monitored location"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-location"
+          with:
+            location-id: "tools.location-id"
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-stage-flow-ratings
+          description: "Retrieve rating tables for converting stage measurements to flow values"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-ratings"
+          with:
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-flood-stage-levels
+          description: "Get flood stage, conservation pool, and other threshold levels for locations"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-levels"
+          with:
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-reservoirs
+          description: "List USACE reservoir projects with storage and pool information"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-reservoirs"
+          with:
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-usace-offices
+          description: "List all USACE district offices (LRN, SWD, MVP, etc.)"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-offices"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: browse-data-catalog
+          description: "Browse available CWMS data types (TIMESERIES, LOCATIONS, RATINGS, RESERVOIRS)"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cwms-data.get-catalog"
+          with:
+            dataset: "tools.dataset"
+            office: "tools.office"
+          outputParameters:
+            - type: object
+              mapping: "$."

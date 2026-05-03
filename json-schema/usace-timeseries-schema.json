@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json",
+  "title": "USACE CWMS Timeseries",
+  "description": "Schema for a CWMS timeseries response containing water management data values",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Timeseries identifier in CWMS format: location.parameter.type.interval.duration.version",
+      "example": "TULA.Flow.Inst.1Hour.0.CBT-RAW"
+    },
+    "office-id": {
+      "type": "string",
+      "description": "USACE district office identifier (e.g., SWT, LRN, MVP)",
+      "example": "SWT"
+    },
+    "units": {
+      "type": "string",
+      "description": "Unit of measure for the timeseries values",
+      "example": "cfs"
+    },
+    "begin": {
+      "type": "string",
+      "description": "Start time of the returned data (ISO 8601)",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "description": "End time of the returned data (ISO 8601)",
+      "format": "date-time"
+    },
+    "values": {
+      "type": "array",
+      "description": "Array of [timestamp-ms, value, quality-code] tuples",
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": [
+          {
+            "type": "number",
+            "description": "Unix timestamp in milliseconds"
+          },
+          {
+            "type": ["number", "null"],
+            "description": "Data value (null if missing or flagged)"
+          },
+          {
+            "type": "integer",
+            "description": "CWMS quality code (0=unscreened, 1=okay, 2=missing, 3=questionable, 4=rejected)"
+          }
+        ]
+      }
+    },
+    "page": {
+      "type": ["string", "null"],
+      "description": "Current page cursor for pagination"
+    },
+    "next-page": {
+      "type": ["string", "null"],
+      "description": "Next page cursor for fetching additional data"
+    }
+  },
+  "required": ["name", "office-id", "units", "values"]
+}

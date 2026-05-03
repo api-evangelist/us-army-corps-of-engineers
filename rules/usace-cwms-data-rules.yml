@@ -1,0 +1,79 @@
+extends: spectral:oas
+rules:
+  usace-operations-have-tags:
+    description: All USACE CWMS Data API operations must have at least one tag for grouping
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  usace-operation-ids-kebab-case:
+    description: Operation IDs should use camelCase as per USACE API conventions
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  usace-parameters-have-descriptions:
+    description: All query parameters should have descriptions for CWMS API usability
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in == 'query')]"
+    then:
+      field: description
+      function: truthy
+
+  usace-pagination-page-size:
+    description: CWMS Data API uses page-size parameter for pagination
+    severity: info
+    given: "$.paths[*][get].parameters[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          if:
+            properties:
+              name:
+                const: page-size
+          then:
+            properties:
+              schema:
+                properties:
+                  type:
+                    const: integer
+
+  usace-response-200-defined:
+    description: All GET operations must define a 200 response
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: responses.200
+      function: truthy
+
+  usace-error-schema-defined:
+    description: Error responses should reference the Error schema
+    severity: warn
+    given: "$.paths[*][*].responses[?(@property >= '400')]"
+    then:
+      field: content
+      function: truthy
+
+  usace-no-trailing-slash:
+    description: API paths should not have trailing slashes
+    severity: warn
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ".*/$"
+
+  usace-server-url-https:
+    description: USACE API servers must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"

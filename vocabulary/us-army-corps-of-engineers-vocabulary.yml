@@ -1,0 +1,167 @@
+name: US Army Corps of Engineers Vocabulary
+description: >-
+  Vocabulary and taxonomy for the US Army Corps of Engineers, covering water resource management,
+  civil engineering, CWMS data concepts, regulatory programs, and operational terminology.
+url: https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/vocabulary/us-army-corps-of-engineers-vocabulary.yml
+created: '2026-05-03'
+modified: '2026-05-03'
+
+categories:
+  - name: Organizational Structure
+    description: USACE organizational units
+    terms:
+      - term: US Army Corps of Engineers
+        abbreviation: USACE
+        definition: >-
+          A federal agency under the Department of Defense that provides civil works, military
+          construction, and environmental engineering services.
+      - term: Headquarters
+        abbreviation: HQUSACE
+        definition: >-
+          The USACE headquarters located in Washington, D.C., responsible for policy and
+          strategic direction.
+      - term: Division
+        definition: >-
+          A major subdivision of USACE responsible for a geographic region, overseeing
+          multiple districts.
+      - term: District
+        definition: >-
+          The primary operational unit of USACE, responsible for civil works and military
+          construction within a geographic area.
+
+  - name: CWMS Data Concepts
+    description: Corps Water Management System data terminology
+    terms:
+      - term: Corps Water Management System
+        abbreviation: CWMS
+        definition: >-
+          The USACE enterprise system for managing, storing, and disseminating water resources data
+          including timeseries, locations, ratings, and levels.
+      - term: CWMS Data API
+        abbreviation: CDA
+        definition: >-
+          The RESTful API providing public access to CWMS database water management data
+          at cwms-data.usace.army.mil.
+      - term: Timeseries
+        definition: >-
+          A sequence of data values measured at successive time intervals, identified by a
+          CWMS timeseries ID in the format: location.parameter.type.interval.duration.version.
+      - term: Location
+        definition: >-
+          A named geographic point in CWMS where measurements are recorded, such as a
+          stream gage station, reservoir, or weather station.
+      - term: Rating Table
+        definition: >-
+          A table that defines the mathematical relationship between two hydraulic variables,
+          most commonly used to convert stream stage (height) to discharge (flow).
+      - term: Location Level
+        definition: >-
+          A defined threshold or reference elevation for a CWMS location, such as flood stage,
+          action stage, conservation pool elevation, or record stage.
+      - term: Quality Code
+        definition: >-
+          A numeric code assigned to each timeseries value indicating data quality:
+          0=unscreened, 1=okay, 2=missing, 3=questionable, 4=rejected, 5=modified.
+      - term: Page Cursor
+        definition: >-
+          An opaque base64-encoded string used for pagination in CWMS API responses to
+          retrieve the next batch of records.
+      - term: EROC
+        definition: "Engineering and Research Operations Center code used to identify USACE offices."
+      - term: Vertical Datum
+        definition: >-
+          The reference surface for elevation measurements. Common datums include NGVD29
+          (National Geodetic Vertical Datum of 1929) and NAVD88 (North American Vertical Datum of 1988).
+
+  - name: Water Resource Management
+    description: Hydrological and water resource terms
+    terms:
+      - term: Stage
+        definition: >-
+          The height of the water surface above a reference datum (gage datum) at a stream
+          gage location, measured in feet or meters.
+      - term: Discharge
+        definition: >-
+          The volume of water flowing past a cross-section per unit time, typically measured
+          in cubic feet per second (cfs) or cubic meters per second.
+      - term: Reservoir Pool
+        definition: >-
+          The water stored in a reservoir. Reservoirs typically have multiple pool zones:
+          conservation pool, flood control pool, and surcharge pool.
+      - term: Flood Stage
+        definition: >-
+          The water level at which a stream begins to overflow its banks, causing flood damage
+          to property or infrastructure.
+      - term: Action Stage
+        definition: >-
+          A water level at which the National Weather Service and USACE begin taking
+          preparatory actions for potential flooding.
+      - term: Conservation Pool
+        definition: >-
+          The normal operating level of a reservoir, used for water supply, recreation,
+          and environmental purposes.
+      - term: Flood Control Pool
+        definition: >-
+          Reservoir storage space above the conservation pool reserved for capturing
+          floodwaters during storm events.
+      - term: Surcharge Pool
+        definition: >-
+          Storage above the flood control pool elevation, used only during extreme floods
+          when reservoir water exceeds normal design flood storage.
+      - term: Precipitation
+        definition: >-
+          Water falling from the atmosphere as rain, snow, sleet, or hail, measured in
+          inches or millimeters by CWMS weather stations.
+      - term: Streamflow
+        definition: >-
+          The volume of water flowing through a stream channel, synonymous with discharge.
+
+  - name: Infrastructure and Projects
+    description: USACE infrastructure and civil works project types
+    terms:
+      - term: Dam
+        definition: >-
+          A barrier constructed to hold back water, forming a reservoir, for flood control,
+          hydropower, water supply, navigation, or recreation purposes.
+      - term: Levee
+        definition: >-
+          An embankment built to prevent flooding of adjacent land, typically along rivers
+          or coastal areas.
+      - term: Lock
+        definition: >-
+          A section of a waterway with gates at each end that can be closed to change the
+          water level, enabling navigation past dams or rapids.
+      - term: Navigation Channel
+        definition: >-
+          A maintained waterway channel kept at sufficient depth for commercial navigation
+          through dredging and other management.
+      - term: Flood Control Project
+        definition: >-
+          An infrastructure project designed to reduce the risk and impact of flooding,
+          including dams, levees, channels, and floodways.
+      - term: Water Supply Project
+        definition: >-
+          A USACE-managed reservoir allocated for providing water supply to communities
+          and industries.
+
+  - name: Regulatory Program
+    description: USACE regulatory and permit terminology
+    terms:
+      - term: Section 404 Permit
+        definition: >-
+          A permit issued under Section 404 of the Clean Water Act authorizing the discharge
+          of dredged or fill material into waters of the United States.
+      - term: Section 10 Permit
+        definition: >-
+          A permit issued under Section 10 of the Rivers and Harbors Act for structures or
+          work in navigable waters of the United States.
+      - term: Nationwide Permit
+        abbreviation: NWP
+        definition: >-
+          A general permit issued by USACE authorizing categories of activities with minimal
+          individual and cumulative adverse environmental effects.
+      - term: Individual Permit
+        abbreviation: IP
+        definition: >-
+          A project-specific permit required for activities with more than minimal impacts
+          to waters of the United States.
