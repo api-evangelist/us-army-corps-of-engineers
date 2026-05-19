@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USACE CWMS Data API — Offices
+  description: 'USACE CWMS Data API — Offices. 1 operations. Lead operation: Get Offices. Self-contained Naftiko capability
+    covering one Us Army Corps Of Engineers business surface.'
+  tags:
+  - Us Army Corps Of Engineers
+  - Offices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_ARMY_CORPS_OF_ENGINEERS_API_KEY: US_ARMY_CORPS_OF_ENGINEERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: usace-cwms-data-offices
+    baseUri: https://cwms-data.usace.army.mil/cwms-data
+    description: USACE CWMS Data API — Offices business capability. Self-contained, no shared references.
+    resources:
+    - name: offices
+      path: /offices
+      operations:
+      - name: getoffices
+        method: GET
+        description: Get Offices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: usace-cwms-data-offices-rest
+    port: 8080
+    description: REST adapter for USACE CWMS Data API — Offices. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/offices
+      name: offices
+      description: REST surface for offices.
+      operations:
+      - method: GET
+        name: getoffices
+        description: Get Offices
+        call: usace-cwms-data-offices.getoffices
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: usace-cwms-data-offices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USACE CWMS Data API — Offices. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-offices
+      description: Get Offices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: usace-cwms-data-offices.getoffices
+      outputParameters:
+      - type: object
+        mapping: $.
