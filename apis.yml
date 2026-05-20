@@ -1,5 +1,8 @@
 aid: us-army-corps-of-engineers
 url: https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/apis.yml
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/us-army-corps-of-engineers
 apis:
 - aid: us-army-corps-of-engineers:usace-cwms-data
   name: USACE CWMS Data API
