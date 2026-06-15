@@ -1,0 +1,1361 @@
+{
+  "item": [
+    {
+      "id": "1d7c2056-d35a-4dc4-bd79-0dbbbdec33f8",
+      "name": "Timeseries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3156c175-b124-4104-b65e-7f57e62359e5",
+          "name": "Get Timeseries Data",
+          "request": {
+            "name": "Get Timeseries Data",
+            "description": {
+              "content": "Retrieves timeseries data from the CWMS database. Results can be filtered by office, location, and time range. Dates may be in ISO 8601 format or milliseconds since the Unix epoch.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeseries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Timeseries identifier (e.g., TULA.Flow.Inst.1Hour.0.CBT-RAW)"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "The office that owns the timeseries"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "The units for the time series values"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "The vertical datum for elevation timeseries"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin",
+                  "value": "<string>",
+                  "description": "Start time in ISO 8601 format or milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "End time in ISO 8601 format or milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "Timezone for time formatting"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Response format"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "500",
+                  "description": "Number of records to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Page cursor for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f62642f-7e6c-4a24-9fe5-d0f7a66b59d2",
+              "name": "Successful response with timeseries data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeseries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"office-id\": \"string\",\n  \"units\": \"string\",\n  \"begin\": \"string\",\n  \"end\": \"string\",\n  \"values\": [\n    [\n      664.0890000348431,\n      9688.7647618284\n    ],\n    [\n      5439.193228878906,\n      6851.202176684325\n    ]\n  ],\n  \"page\": \"string\",\n  \"next-page\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54ae4746-4238-41b9-b249-b35e17fcaca6",
+              "name": "Timeseries not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeseries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 103,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d45f40bd-794a-460e-a120-63c02b06c75f",
+          "name": "Get Timeseries Catalog",
+          "request": {
+            "name": "Get Timeseries Catalog",
+            "description": {
+              "content": "Returns a catalog of available timeseries identifiers, optionally filtered by office and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeseries",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeseries-id-like",
+                  "value": "<string>",
+                  "description": "Filter by timeseries ID pattern (supports SQL LIKE syntax)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "500",
+                  "description": "Number of catalog entries per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a278efb-96b6-471a-9798-b000206be525",
+              "name": "Catalog of timeseries identifiers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeseries",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeseries-id-like",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"total\": 9965,\n  \"page-size\": 7043,\n  \"entries\": [\n    {\n      \"office\": \"string\",\n      \"name\": \"string\",\n      \"units-available\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"office\": \"string\",\n      \"name\": \"string\",\n      \"units-available\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3103d775-d2cc-457b-8a8a-89884ebe0b20",
+      "name": "Locations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c44a1cb2-02ab-4bec-909f-326a0dc7919c",
+          "name": "Get Locations",
+          "request": {
+            "name": "Get Locations",
+            "description": {
+              "content": "Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "Filter by location names (pipe-delimited)"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system for coordinate data (EN or SI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum for elevation"
+                },
+                {
+                  "disabled": false,
+                  "key": "category-id",
+                  "value": "<string>",
+                  "description": "Location category filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "500",
+                  "description": "Records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0e5517a-13d9-4f5a-891d-ffc732549ac9",
+              "name": "List of locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"total\": 7266,\n  \"page-size\": 8632,\n  \"locations\": {\n    \"location\": [\n      {\n        \"name\": \"string\",\n        \"latitude\": 9181.797680461066,\n        \"longitude\": 835.3283470178941,\n        \"elevation\": 4258.020804223428,\n        \"vertical-datum\": \"string\",\n        \"horizontal-datum\": \"string\",\n        \"public-name\": \"string\",\n        \"long-name\": \"string\",\n        \"description\": \"string\",\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"time-zone-name\": \"string\",\n        \"county-name\": \"string\",\n        \"state-initial\": \"string\",\n        \"active\": true,\n        \"office-id\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"latitude\": 9292.006645773361,\n        \"longitude\": 1412.93209028993,\n        \"elevation\": 7221.417442393875,\n        \"vertical-datum\": \"string\",\n        \"horizontal-datum\": \"string\",\n        \"public-name\": \"string\",\n        \"long-name\": \"string\",\n        \"description\": \"string\",\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"time-zone-name\": \"string\",\n        \"county-name\": \"string\",\n        \"state-initial\": \"string\",\n        \"active\": true,\n        \"office-id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6c302fb-0c2a-4fdd-8bfe-642405bb324d",
+          "name": "Get Location by ID",
+          "request": {
+            "name": "Get Location by ID",
+            "description": {
+              "content": "Returns details for a specific CWMS location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations",
+                ":location-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "(Required) Office that owns the location"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system (EN or SI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location-id",
+                  "description": "(Required) The location identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a3a91be-89f0-444e-9ac5-e73e60e1fd01",
+              "name": "Location details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations",
+                    ":location-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location-id",
+                      "description": "(Required) The location identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"latitude\": 7580.845126808616,\n  \"longitude\": 2361.8280067625465,\n  \"elevation\": 4628.026979163674,\n  \"vertical-datum\": \"string\",\n  \"horizontal-datum\": \"string\",\n  \"public-name\": \"string\",\n  \"long-name\": \"string\",\n  \"description\": \"string\",\n  \"kind\": \"string\",\n  \"type\": \"string\",\n  \"time-zone-name\": \"string\",\n  \"county-name\": \"string\",\n  \"state-initial\": \"string\",\n  \"active\": true,\n  \"office-id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45e75780-5bed-4fb5-b12f-763c4391db8d",
+              "name": "Location not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations",
+                    ":location-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location-id",
+                      "description": "(Required) The location identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 103,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b4895c7b-e5c5-4412-8f0d-9e57c4fefe13",
+      "name": "Catalog",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "842ce597-e2a6-482b-93f7-b09b2103819e",
+          "name": "Get Data Catalog",
+          "request": {
+            "name": "Get Data Catalog",
+            "description": {
+              "content": "Returns a catalog of available data items for the specified dataset type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "500",
+                  "description": "Records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) Dataset type to catalog"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb446d25-6156-4c3f-bb0c-7c7a1f637c34",
+              "name": "Data catalog entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) Dataset type to catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"total\": 4282,\n  \"page-size\": 3315,\n  \"entries\": [\n    {\n      \"office\": \"string\",\n      \"name\": \"string\",\n      \"units-available\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"office\": \"string\",\n      \"name\": \"string\",\n      \"units-available\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f397804b-9c66-4c2e-9285-3c672ab074a6",
+      "name": "Ratings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "634626ea-b68e-4a84-984d-66c3aa3e4b35",
+          "name": "Get Ratings",
+          "request": {
+            "name": "Get Ratings",
+            "description": {
+              "content": "Retrieves rating tables used to convert measured values to derived values (e.g., stage to flow).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rating-id-mask",
+                  "value": "<string>",
+                  "description": "Filter by rating ID pattern"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin",
+                  "value": "<string>",
+                  "description": "Filter ratings effective after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "Filter ratings effective before this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "<integer>",
+                  "description": "Records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4caab4e2-42bb-42e9-a0e3-44260c3bfec4",
+              "name": "Rating tables",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rating-id-mask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"simple-rating-tables\": [\n    {\n      \"rating-id\": \"string\",\n      \"office-id\": \"string\",\n      \"description\": \"string\",\n      \"effective-dates\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"rating-id\": \"string\",\n      \"office-id\": \"string\",\n      \"description\": \"string\",\n      \"effective-dates\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "282966f6-4786-4e6d-bea9-f47f3beb2919",
+      "name": "Levels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f6d4d84-8a06-4f6e-ab50-1f100e67f1d8",
+          "name": "Get Location Levels",
+          "request": {
+            "name": "Get Location Levels",
+            "description": {
+              "content": "Retrieves location levels (stage, elevation thresholds) for CWMS locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "levels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location-id-mask",
+                  "value": "<string>",
+                  "description": "Filter by location ID pattern"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin",
+                  "value": "<string>",
+                  "description": "Start time filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "End time filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5486d3c0-55f9-4579-ab35-4a0da1b234b4",
+              "name": "Location levels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "levels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location-id-mask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"location-levels\": [\n    {\n      \"location-level-id\": \"string\",\n      \"office-id\": \"string\",\n      \"constant-value\": 5548.942357393577,\n      \"level-units-id\": \"string\",\n      \"level-date\": \"string\",\n      \"level-comment\": \"string\"\n    },\n    {\n      \"location-level-id\": \"string\",\n      \"office-id\": \"string\",\n      \"constant-value\": 7582.410905455559,\n      \"level-units-id\": \"string\",\n      \"level-date\": \"string\",\n      \"level-comment\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "15a3e6b7-cb50-4042-b226-8b9dffe76b0c",
+      "name": "Offices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ecb5e02-33c8-44ef-bc72-404968247059",
+          "name": "Get Offices",
+          "request": {
+            "name": "Get Offices",
+            "description": {
+              "content": "Returns a list of USACE district offices in the CWMS system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa80a760-d461-492b-9967-f54e02554638",
+              "name": "List of USACE offices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offices\": [\n    {\n      \"name\": \"string\",\n      \"long-name\": \"string\",\n      \"headquarters-region\": \"string\",\n      \"eroc\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"long-name\": \"string\",\n      \"headquarters-region\": \"string\",\n      \"eroc\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "153a119e-081e-465a-8a25-35c31ebabef8",
+      "name": "Reservoirs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3fc2def-5a12-4bc7-b966-bcd63f93ca69",
+          "name": "Get Reservoir Projects",
+          "request": {
+            "name": "Get Reservoir Projects",
+            "description": {
+              "content": "Returns USACE reservoir project information, including pool data and storage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reservoirs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "project-id-like",
+                  "value": "<string>",
+                  "description": "Filter by project ID pattern"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61971297-d0dd-40d3-839a-27fe74618a40",
+              "name": "List of reservoirs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reservoirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project-id-like",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"reservoirs\": [\n    {\n      \"project-id\": {\n        \"name\": \"string\",\n        \"office-id\": \"string\"\n      },\n      \"near-normal-storage\": 423.8001632941946,\n      \"normal-storage-period\": \"string\"\n    },\n    {\n      \"project-id\": {\n        \"name\": \"string\",\n        \"office-id\": \"string\"\n      },\n      \"near-normal-storage\": 905.4506439024846,\n      \"normal-storage-period\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cwms-data.usace.army.mil/cwms-data",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "992c5628-bdc9-4506-9e39-33ae083cc619",
+    "name": "USACE CWMS Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.\n\nContact Support:\n Name: USACE HEC",
+      "type": "text/plain"
+    }
+  }
+}

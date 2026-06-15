@@ -1,0 +1,459 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Timeseries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Timeseries Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/timeseries",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Timeseries identifier (e.g., TULA.Flow.Inst.1Hour.0.CBT-RAW)"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "The office that owns the timeseries"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "The units for the time series values"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "The vertical datum for elevation timeseries"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Start time in ISO 8601 format or milliseconds"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time in ISO 8601 format or milliseconds"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for time formatting"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page cursor for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieves timeseries data from the CWMS database. Results can be filtered by office, location, and time range. Dates may be in ISO 8601 format or milliseconds since the Unix epoch."
+        },
+        {
+          "info": {
+            "name": "Get Timeseries Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/timeseries/catalog",
+            "params": [
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office identifier"
+              },
+              {
+                "name": "timeseries-id-like",
+                "value": "",
+                "type": "query",
+                "description": "Filter by timeseries ID pattern (supports SQL LIKE syntax)"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Number of catalog entries per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a catalog of available timeseries identifiers, optionally filtered by office and location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/locations",
+            "params": [
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location names (pipe-delimited)"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office identifier"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for coordinate data (EN or SI)"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for elevation"
+              },
+              {
+                "name": "category-id",
+                "value": "",
+                "type": "query",
+                "description": "Location category filter"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern."
+        },
+        {
+          "info": {
+            "name": "Get Location by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/locations/:location-id",
+            "params": [
+              {
+                "name": "location-id",
+                "value": "",
+                "type": "path",
+                "description": "The location identifier"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Office that owns the location"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system (EN or SI)"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific CWMS location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/catalog/:dataset",
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path",
+                "description": "Dataset type to catalog"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a catalog of available data items for the specified dataset type."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ratings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/ratings",
+            "params": [
+              {
+                "name": "rating-id-mask",
+                "value": "",
+                "type": "query",
+                "description": "Filter by rating ID pattern"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Filter ratings effective after this date"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Filter ratings effective before this date"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieves rating tables used to convert measured values to derived values (e.g., stage to flow)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Levels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Location Levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/levels",
+            "params": [
+              {
+                "name": "location-id-mask",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location ID pattern"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Start time filter"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time filter"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves location levels (stage, elevation thresholds) for CWMS locations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Offices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Offices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/offices"
+          },
+          "docs": "Returns a list of USACE district offices in the CWMS system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reservoirs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reservoir Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/reservoirs",
+            "params": [
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "project-id-like",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project ID pattern"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns USACE reservoir project information, including pool data and storage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
