@@ -1,6 +1,8 @@
 aid: us-army-corps-of-engineers
 url: https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/apis.yml
 common:
+  - type: DomainSecurity
+    url: security/us-army-corps-of-engineers-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/us-army-corps-of-engineers
 apis:
