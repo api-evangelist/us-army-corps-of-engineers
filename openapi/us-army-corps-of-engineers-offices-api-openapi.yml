@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: USACE CWMS Data Catalog Offices API
+  description: The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.
+  version: 2.0.0
+  contact:
+    name: USACE HEC
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://cwms-data.usace.army.mil/cwms-data
+  description: Production server (public data)
+- url: https://cwms-data-test.cwbi.us/cwms-data
+  description: Test server
+tags:
+- name: Offices
+paths:
+  /offices:
+    get:
+      operationId: getOffices
+      summary: Get Offices
+      description: Returns a list of USACE district offices in the CWMS system.
+      tags:
+      - Offices
+      responses:
+        '200':
+          description: List of USACE offices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficesResponse'
+components:
+  schemas:
+    OfficesResponse:
+      type: object
+      properties:
+        offices:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Office short code (e.g., LRN, SWD)
+              long-name:
+                type: string
+                description: Full office name
+              headquarters-region:
+                type: string
+                description: Division headquarters
+              eroc:
+                type: string
+                description: EROC code

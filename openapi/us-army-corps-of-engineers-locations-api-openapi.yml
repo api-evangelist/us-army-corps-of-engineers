@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: USACE CWMS Data Catalog Locations API
+  description: The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.
+  version: 2.0.0
+  contact:
+    name: USACE HEC
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://cwms-data.usace.army.mil/cwms-data
+  description: Production server (public data)
+- url: https://cwms-data-test.cwbi.us/cwms-data
+  description: Test server
+tags:
+- name: Locations
+paths:
+  /locations:
+    get:
+      operationId: getLocations
+      summary: Get Locations
+      description: Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern.
+      tags:
+      - Locations
+      parameters:
+      - name: names
+        in: query
+        required: false
+        description: Filter by location names (pipe-delimited)
+        schema:
+          type: string
+      - name: office
+        in: query
+        required: false
+        description: Filter by office identifier
+        schema:
+          type: string
+      - name: unit
+        in: query
+        required: false
+        description: Unit system for coordinate data (EN or SI)
+        schema:
+          type: string
+          enum:
+          - EN
+          - SI
+      - name: datum
+        in: query
+        required: false
+        description: Vertical datum for elevation
+        schema:
+          type: string
+      - name: category-id
+        in: query
+        required: false
+        description: Location category filter
+        schema:
+          type: string
+      - name: page-size
+        in: query
+        required: false
+        description: Records per page
+        schema:
+          type: integer
+          default: 500
+      - name: page
+        in: query
+        required: false
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationsResponse'
+  /locations/{location-id}:
+    get:
+      operationId: getLocation
+      summary: Get Location by ID
+      description: Returns details for a specific CWMS location.
+      tags:
+      - Locations
+      parameters:
+      - name: location-id
+        in: path
+        required: true
+        description: The location identifier
+        schema:
+          type: string
+      - name: office
+        in: query
+        required: true
+        description: Office that owns the location
+        schema:
+          type: string
+      - name: unit
+        in: query
+        required: false
+        description: Unit system (EN or SI)
+        schema:
+          type: string
+          enum:
+          - EN
+          - SI
+      - name: datum
+        in: query
+        required: false
+        description: Vertical datum
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Location details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '404':
+          description: Location not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Location:
+      type: object
+      description: A CWMS monitored location
+      properties:
+        name:
+          type: string
+          description: Location identifier
+        latitude:
+          type: number
+          format: double
+          description: WGS84 latitude
+        longitude:
+          type: number
+          format: double
+          description: WGS84 longitude
+        elevation:
+          type: number
+          description: Location elevation
+        vertical-datum:
+          type: string
+          description: Vertical datum for elevation
+        horizontal-datum:
+          type: string
+          description: Horizontal datum for coordinates
+        public-name:
+          type: string
+          description: Public display name
+        long-name:
+          type: string
+          description: Full location description
+        description:
+          type: string
+          description: Additional description
+        kind:
+          type: string
+          description: Location kind (e.g., SITE, STREAM, RESERVOIR)
+        type:
+          type: string
+          description: Location type
+        time-zone-name:
+          type: string
+          description: Location time zone
+        county-name:
+          type: string
+          description: County name
+        state-initial:
+          type: string
+          description: State two-letter abbreviation
+        active:
+          type: boolean
+          description: Whether the location is active
+        office-id:
+          type: string
+          description: Office that owns this location
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message
+    LocationsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        total:
+          type: integer
+        page-size:
+          type: integer
+        locations:
+          type: object
+          properties:
+            location:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'

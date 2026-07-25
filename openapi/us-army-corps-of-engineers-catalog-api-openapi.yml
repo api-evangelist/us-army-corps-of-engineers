@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: USACE CWMS Data Catalog API
+  description: The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.
+  version: 2.0.0
+  contact:
+    name: USACE HEC
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://cwms-data.usace.army.mil/cwms-data
+  description: Production server (public data)
+- url: https://cwms-data-test.cwbi.us/cwms-data
+  description: Test server
+tags:
+- name: Catalog
+paths:
+  /catalog/{dataset}:
+    get:
+      operationId: getCatalog
+      summary: Get Data Catalog
+      description: Returns a catalog of available data items for the specified dataset type.
+      tags:
+      - Catalog
+      parameters:
+      - name: dataset
+        in: path
+        required: true
+        description: Dataset type to catalog
+        schema:
+          type: string
+          enum:
+          - TIMESERIES
+          - LOCATIONS
+          - BASINS
+          - BLOBS
+          - COUNTIES
+          - LEVELS
+          - OFFICES
+          - RATINGS
+          - SPECIFIED-LEVELS
+          - STATES
+          - STREAMS
+          - UNITS
+      - name: office
+        in: query
+        required: false
+        description: Filter by office
+        schema:
+          type: string
+      - name: page-size
+        in: query
+        required: false
+        description: Records per page
+        schema:
+          type: integer
+          default: 500
+      - name: page
+        in: query
+        required: false
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data catalog entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogResponse'
+components:
+  schemas:
+    CatalogResponse:
+      type: object
+      description: Paginated catalog of available data items
+      properties:
+        page:
+          type: string
+          description: Current page cursor
+        next-page:
+          type: string
+          description: Next page cursor
+        total:
+          type: integer
+          description: Total number of entries
+        page-size:
+          type: integer
+          description: Records per page
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              office:
+                type: string
+              name:
+                type: string
+              units-available:
+                type: array
+                items:
+                  type: string

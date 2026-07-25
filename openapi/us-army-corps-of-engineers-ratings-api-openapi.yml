@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: USACE CWMS Data Catalog Ratings API
+  description: The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.
+  version: 2.0.0
+  contact:
+    name: USACE HEC
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://cwms-data.usace.army.mil/cwms-data
+  description: Production server (public data)
+- url: https://cwms-data-test.cwbi.us/cwms-data
+  description: Test server
+tags:
+- name: Ratings
+paths:
+  /ratings:
+    get:
+      operationId: getRatings
+      summary: Get Ratings
+      description: Retrieves rating tables used to convert measured values to derived values (e.g., stage to flow).
+      tags:
+      - Ratings
+      parameters:
+      - name: rating-id-mask
+        in: query
+        required: false
+        description: Filter by rating ID pattern
+        schema:
+          type: string
+      - name: office
+        in: query
+        required: false
+        description: Filter by office
+        schema:
+          type: string
+      - name: begin
+        in: query
+        required: false
+        description: Filter ratings effective after this date
+        schema:
+          type: string
+      - name: end
+        in: query
+        required: false
+        description: Filter ratings effective before this date
+        schema:
+          type: string
+      - name: page-size
+        in: query
+        required: false
+        description: Records per page
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Rating tables
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatingsResponse'
+components:
+  schemas:
+    RatingsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        simple-rating-tables:
+          type: array
+          items:
+            type: object
+            properties:
+              rating-id:
+                type: string
+              office-id:
+                type: string
+              description:
+                type: string
+              effective-dates:
+                type: array
+                items:
+                  type: string
