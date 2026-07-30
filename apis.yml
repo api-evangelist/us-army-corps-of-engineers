@@ -8,88 +8,238 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/us-army-corps-of-engineers
 apis:
-  - aid: us-army-corps-of-engineers:usace-cwms-data
-    name: USACE CWMS Data API
-    tags:
-      - Water Resources
-      - Federal Government
-      - Water Data
-      - Hydrological Data
-      - Open Data
-      - Timeseries
-      - REST API
-    humanURL: https://cwms-data.usace.army.mil/cwms-data/
-    baseURL: https://cwms-data.usace.army.mil/cwms-data
-    properties:
-      - url: https://cwms-data.usace.army.mil/cwms-data/
-        type: Documentation
-      - url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
-        type: SwaggerUI
-      - url: https://github.com/USACE/cwms-data-api
-        type: GitHubRepository
-      - url: https://cwms-data-api.readthedocs.io/latest/
-        type: APIDocumentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/openapi/usace-cwms-data-openapi.yml
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
-        type: SpectralRuleset
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
-        type: JSONSchema
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
-        type: JSONLDContext
-    description: >-
-      The Corps Water Management System Data API (CDA) is a RESTful API providing public access to USACE water
-      management data. It supports retrieval of timeseries data (stream flow, reservoir levels, precipitation), location
-      information, rating tables, location levels, reservoirs, and a full data catalog. The API supports pagination,
-      unit conversion, and multiple date/time formats (ISO 8601 or epoch milliseconds). Data is publicly available
-      without authentication for reading.
-  - aid: us-army-corps-of-engineers:usace-national-inventory-of-dams
-    name: USACE National Inventory of Dams API
-    tags:
-      - Dams
-      - Federal Government
-      - Water Infrastructure
-      - Safety
-      - Geospatial Data
-    humanURL: https://nid.sec.usace.army.mil/
-    properties:
-      - url: https://nid.sec.usace.army.mil/
-        type: Documentation
-      - url: https://nid.sec.usace.army.mil/api/developer
-        type: SwaggerUI
-      - url: https://geospatial-usace.opendata.arcgis.com/datasets/1632cb2bb23046569fbf2bc144f06764_0
-        type: GISData
-    description: >-
-      The National Inventory of Dams (NID) API provides access to the comprehensive database of US dams maintained by
-      the US Army Corps of Engineers. The database contains information on over 70 data fields for each dam including
-      location, size, type, purpose, hazard classification, last inspection date, and owner information. The API
-      supports searching and filtering dam records.
-  - aid: us-army-corps-of-engineers:usace-open-data
-    name: USACE Open Data
-    tags:
-      - Open Data
-      - Federal Government
-      - Geospatial Data
-      - Water Resources
-      - Infrastructure
-    humanURL: https://www.usace.army.mil/open/
-    properties:
-      - url: https://www.usace.army.mil/open/
-        type: Documentation
-      - url: https://geospatial-usace.opendata.arcgis.com/
-        type: GeoSpatialPortal
-      - url: https://catalog.data.gov/dataset?publisher=US+Army+Corps+of+Engineers
-        type: DataGov
-      - url: https://permits.ops.usace.army.mil/
-        type: PermitsPortal
-    description: >-
-      The USACE Open Data program provides public access to geospatial data, regulatory permit information, and other
-      datasets maintained by the US Army Corps of Engineers. Data is available through ArcGIS Open Data, data.gov, and
-      the USACE Regulatory portal.
+- aid: us-army-corps-of-engineers:usace-national-inventory-of-dams
+  name: USACE National Inventory of Dams API
+  tags:
+  - Dams
+  - Federal Government
+  - Water Infrastructure
+  - Safety
+  - Geospatial Data
+  humanURL: https://nid.sec.usace.army.mil/
+  properties:
+  - url: https://nid.sec.usace.army.mil/
+    type: Documentation
+  - url: https://nid.sec.usace.army.mil/api/developer
+    type: SwaggerUI
+  - url: https://geospatial-usace.opendata.arcgis.com/datasets/1632cb2bb23046569fbf2bc144f06764_0
+    type: GISData
+  description: >-
+    The National Inventory of Dams (NID) API provides access to the comprehensive database of US dams
+    maintained by the US Army Corps of Engineers. The database contains information on over 70 data fields
+    for each dam including location, size, type, purpose, hazard classification, last inspection date,
+    and owner information. The API supports searching and filtering dam records.
+- aid: us-army-corps-of-engineers:usace-open-data
+  name: USACE Open Data
+  tags:
+  - Open Data
+  - Federal Government
+  - Geospatial Data
+  - Water Resources
+  - Infrastructure
+  humanURL: https://www.usace.army.mil/open/
+  properties:
+  - url: https://www.usace.army.mil/open/
+    type: Documentation
+  - url: https://geospatial-usace.opendata.arcgis.com/
+    type: GeoSpatialPortal
+  - url: https://catalog.data.gov/dataset?publisher=US+Army+Corps+of+Engineers
+    type: DataGov
+  - url: https://permits.ops.usace.army.mil/
+    type: PermitsPortal
+  description: >-
+    The USACE Open Data program provides public access to geospatial data, regulatory permit information,
+    and other datasets maintained by the US Army Corps of Engineers. Data is available through ArcGIS
+    Open Data, data.gov, and the USACE Regulatory portal.
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-catalog-api
+  name: US Army Corps of Engineers Catalog API
+  description: The Catalog API from US Army Corps of Engineers — 1 operation(s) for catalog.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-levels-api
+  name: US Army Corps of Engineers Levels API
+  description: The Levels API from US Army Corps of Engineers — 1 operation(s) for levels.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Levels
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-levels-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-locations-api
+  name: US Army Corps of Engineers Locations API
+  description: The Locations API from US Army Corps of Engineers — 2 operation(s) for locations.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-locations-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-offices-api
+  name: US Army Corps of Engineers Offices API
+  description: The Offices API from US Army Corps of Engineers — 1 operation(s) for offices.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Offices
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-offices-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-ratings-api
+  name: US Army Corps of Engineers Ratings API
+  description: The Ratings API from US Army Corps of Engineers — 1 operation(s) for ratings.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Ratings
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-ratings-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-reservoirs-api
+  name: US Army Corps of Engineers Reservoirs API
+  description: The Reservoirs API from US Army Corps of Engineers — 1 operation(s) for reservoirs.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Reservoirs
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-reservoirs-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-timeseries-api
+  name: US Army Corps of Engineers Timeseries API
+  description: The Timeseries API from US Army Corps of Engineers — 2 operation(s) for timeseries.
+  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+  baseURL: https://cwms-data.usace.army.mil/cwms-data
+  tags:
+  - Timeseries
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-corps-of-engineers-timeseries-api-openapi.yml
+  - type: Documentation
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  - type: SwaggerUI
+    url: https://cwms-data.usace.army.mil/cwms-data/swagger-ui.html
+  - type: GitHubRepository
+    url: https://github.com/USACE/cwms-data-api
+  - type: APIDocumentation
+    url: https://cwms-data-api.readthedocs.io/latest/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/rules/usace-cwms-data-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-schema/usace-timeseries-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
 name: US Army Corps of Engineers
 tags:
   - Water Resources
@@ -99,7 +249,19 @@ tags:
   - Open Data
   - Geospatial Data
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/us-army-corps-of-engineers.png
 access: 3rd-Party
 created: '2024-11-21'
 modified: '2026-05-19'
