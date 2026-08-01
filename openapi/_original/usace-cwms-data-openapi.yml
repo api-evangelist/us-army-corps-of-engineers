@@ -1,0 +1,710 @@
+openapi: 3.0.3
+info:
+  title: USACE CWMS Data API
+  description: >-
+    The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables
+    secure data exchange for publicly available USACE water management data. The API provides
+    access to timeseries data, location information, ratings, reservoirs, levels, and other
+    water resource data maintained by the US Army Corps of Engineers.
+  version: 2.0.0
+  contact:
+    name: USACE HEC
+    url: https://cwms-data.usace.army.mil/cwms-data/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+  - url: https://cwms-data.usace.army.mil/cwms-data
+    description: Production server (public data)
+  - url: https://cwms-data-test.cwbi.us/cwms-data
+    description: Test server
+
+paths:
+  /timeseries:
+    get:
+      operationId: getTimeseries
+      summary: Get Timeseries Data
+      description: >-
+        Retrieves timeseries data from the CWMS database. Results can be filtered by
+        office, location, and time range. Dates may be in ISO 8601 format or milliseconds
+        since the Unix epoch.
+      tags:
+        - Timeseries
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: Timeseries identifier (e.g., TULA.Flow.Inst.1Hour.0.CBT-RAW)
+          schema:
+            type: string
+        - name: office
+          in: query
+          required: false
+          description: The office that owns the timeseries
+          schema:
+            type: string
+        - name: unit
+          in: query
+          required: false
+          description: The units for the time series values
+          schema:
+            type: string
+        - name: datum
+          in: query
+          required: false
+          description: The vertical datum for elevation timeseries
+          schema:
+            type: string
+            enum: [NGVD29, NAVD88]
+        - name: begin
+          in: query
+          required: false
+          description: Start time in ISO 8601 format or milliseconds
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: End time in ISO 8601 format or milliseconds
+          schema:
+            type: string
+        - name: timezone
+          in: query
+          required: false
+          description: Timezone for time formatting
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          description: Response format
+          schema:
+            type: string
+            enum: [json, xml, tab, csv]
+        - name: page-size
+          in: query
+          required: false
+          description: Number of records to return per page
+          schema:
+            type: integer
+            default: 500
+        - name: page
+          in: query
+          required: false
+          description: Page cursor for pagination
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with timeseries data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeseriesResponse'
+        '404':
+          description: Timeseries not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /timeseries/catalog:
+    get:
+      operationId: getTimeseriesCatalog
+      summary: Get Timeseries Catalog
+      description: Returns a catalog of available timeseries identifiers, optionally filtered by office and location.
+      tags:
+        - Timeseries
+      parameters:
+        - name: office
+          in: query
+          required: false
+          description: Filter by office identifier
+          schema:
+            type: string
+        - name: timeseries-id-like
+          in: query
+          required: false
+          description: Filter by timeseries ID pattern (supports SQL LIKE syntax)
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          description: Number of catalog entries per page
+          schema:
+            type: integer
+            default: 500
+        - name: page
+          in: query
+          required: false
+          description: Pagination cursor
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Catalog of timeseries identifiers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogResponse'
+
+  /locations:
+    get:
+      operationId: getLocations
+      summary: Get Locations
+      description: Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern.
+      tags:
+        - Locations
+      parameters:
+        - name: names
+          in: query
+          required: false
+          description: Filter by location names (pipe-delimited)
+          schema:
+            type: string
+        - name: office
+          in: query
+          required: false
+          description: Filter by office identifier
+          schema:
+            type: string
+        - name: unit
+          in: query
+          required: false
+          description: Unit system for coordinate data (EN or SI)
+          schema:
+            type: string
+            enum: [EN, SI]
+        - name: datum
+          in: query
+          required: false
+          description: Vertical datum for elevation
+          schema:
+            type: string
+        - name: category-id
+          in: query
+          required: false
+          description: Location category filter
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          description: Records per page
+          schema:
+            type: integer
+            default: 500
+        - name: page
+          in: query
+          required: false
+          description: Pagination cursor
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationsResponse'
+
+  /locations/{location-id}:
+    get:
+      operationId: getLocation
+      summary: Get Location by ID
+      description: Returns details for a specific CWMS location.
+      tags:
+        - Locations
+      parameters:
+        - name: location-id
+          in: path
+          required: true
+          description: The location identifier
+          schema:
+            type: string
+        - name: office
+          in: query
+          required: true
+          description: Office that owns the location
+          schema:
+            type: string
+        - name: unit
+          in: query
+          required: false
+          description: Unit system (EN or SI)
+          schema:
+            type: string
+            enum: [EN, SI]
+        - name: datum
+          in: query
+          required: false
+          description: Vertical datum
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Location details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '404':
+          description: Location not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /catalog/{dataset}:
+    get:
+      operationId: getCatalog
+      summary: Get Data Catalog
+      description: Returns a catalog of available data items for the specified dataset type.
+      tags:
+        - Catalog
+      parameters:
+        - name: dataset
+          in: path
+          required: true
+          description: Dataset type to catalog
+          schema:
+            type: string
+            enum: [TIMESERIES, LOCATIONS, BASINS, BLOBS, COUNTIES, LEVELS, OFFICES, RATINGS, SPECIFIED-LEVELS, STATES, STREAMS, UNITS]
+        - name: office
+          in: query
+          required: false
+          description: Filter by office
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          description: Records per page
+          schema:
+            type: integer
+            default: 500
+        - name: page
+          in: query
+          required: false
+          description: Pagination cursor
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Data catalog entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogResponse'
+
+  /ratings:
+    get:
+      operationId: getRatings
+      summary: Get Ratings
+      description: Retrieves rating tables used to convert measured values to derived values (e.g., stage to flow).
+      tags:
+        - Ratings
+      parameters:
+        - name: rating-id-mask
+          in: query
+          required: false
+          description: Filter by rating ID pattern
+          schema:
+            type: string
+        - name: office
+          in: query
+          required: false
+          description: Filter by office
+          schema:
+            type: string
+        - name: begin
+          in: query
+          required: false
+          description: Filter ratings effective after this date
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: Filter ratings effective before this date
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          description: Records per page
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          description: Pagination cursor
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rating tables
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatingsResponse'
+
+  /levels:
+    get:
+      operationId: getLevels
+      summary: Get Location Levels
+      description: Retrieves location levels (stage, elevation thresholds) for CWMS locations.
+      tags:
+        - Levels
+      parameters:
+        - name: location-id-mask
+          in: query
+          required: false
+          description: Filter by location ID pattern
+          schema:
+            type: string
+        - name: office
+          in: query
+          required: false
+          description: Filter by office
+          schema:
+            type: string
+        - name: unit
+          in: query
+          required: false
+          description: Unit system
+          schema:
+            type: string
+        - name: datum
+          in: query
+          required: false
+          description: Vertical datum
+          schema:
+            type: string
+        - name: begin
+          in: query
+          required: false
+          description: Start time filter
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: End time filter
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Location levels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LevelsResponse'
+
+  /offices:
+    get:
+      operationId: getOffices
+      summary: Get Offices
+      description: Returns a list of USACE district offices in the CWMS system.
+      tags:
+        - Offices
+      responses:
+        '200':
+          description: List of USACE offices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficesResponse'
+
+  /reservoirs:
+    get:
+      operationId: getReservoirs
+      summary: Get Reservoir Projects
+      description: Returns USACE reservoir project information, including pool data and storage.
+      tags:
+        - Reservoirs
+      parameters:
+        - name: office
+          in: query
+          required: false
+          description: Filter by office
+          schema:
+            type: string
+        - name: project-id-like
+          in: query
+          required: false
+          description: Filter by project ID pattern
+          schema:
+            type: string
+        - name: page-size
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of reservoirs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservoirsResponse'
+
+components:
+  schemas:
+    TimeseriesResponse:
+      type: object
+      description: Paginated response containing timeseries data values
+      properties:
+        name:
+          type: string
+          description: Timeseries identifier
+        office-id:
+          type: string
+          description: Office that owns the timeseries
+        units:
+          type: string
+          description: Unit of measure for values
+        begin:
+          type: string
+          description: Start time of returned data
+        end:
+          type: string
+          description: End time of returned data
+        values:
+          type: array
+          description: Array of [timestamp, value, quality-code] tuples
+          items:
+            type: array
+            items:
+              oneOf:
+                - type: number
+                - type: integer
+        page:
+          type: string
+          description: Current page cursor
+        next-page:
+          type: string
+          description: Next page cursor for pagination
+
+    Location:
+      type: object
+      description: A CWMS monitored location
+      properties:
+        name:
+          type: string
+          description: Location identifier
+        latitude:
+          type: number
+          format: double
+          description: WGS84 latitude
+        longitude:
+          type: number
+          format: double
+          description: WGS84 longitude
+        elevation:
+          type: number
+          description: Location elevation
+        vertical-datum:
+          type: string
+          description: Vertical datum for elevation
+        horizontal-datum:
+          type: string
+          description: Horizontal datum for coordinates
+        public-name:
+          type: string
+          description: Public display name
+        long-name:
+          type: string
+          description: Full location description
+        description:
+          type: string
+          description: Additional description
+        kind:
+          type: string
+          description: Location kind (e.g., SITE, STREAM, RESERVOIR)
+        type:
+          type: string
+          description: Location type
+        time-zone-name:
+          type: string
+          description: Location time zone
+        county-name:
+          type: string
+          description: County name
+        state-initial:
+          type: string
+          description: State two-letter abbreviation
+        active:
+          type: boolean
+          description: Whether the location is active
+        office-id:
+          type: string
+          description: Office that owns this location
+
+    LocationsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        total:
+          type: integer
+        page-size:
+          type: integer
+        locations:
+          type: object
+          properties:
+            location:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'
+
+    CatalogResponse:
+      type: object
+      description: Paginated catalog of available data items
+      properties:
+        page:
+          type: string
+          description: Current page cursor
+        next-page:
+          type: string
+          description: Next page cursor
+        total:
+          type: integer
+          description: Total number of entries
+        page-size:
+          type: integer
+          description: Records per page
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              office:
+                type: string
+              name:
+                type: string
+              units-available:
+                type: array
+                items:
+                  type: string
+
+    RatingsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        simple-rating-tables:
+          type: array
+          items:
+            type: object
+            properties:
+              rating-id:
+                type: string
+              office-id:
+                type: string
+              description:
+                type: string
+              effective-dates:
+                type: array
+                items:
+                  type: string
+
+    LevelsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        location-levels:
+          type: array
+          items:
+            type: object
+            properties:
+              location-level-id:
+                type: string
+              office-id:
+                type: string
+              constant-value:
+                type: number
+              level-units-id:
+                type: string
+              level-date:
+                type: string
+              level-comment:
+                type: string
+
+    OfficesResponse:
+      type: object
+      properties:
+        offices:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Office short code (e.g., LRN, SWD)
+              long-name:
+                type: string
+                description: Full office name
+              headquarters-region:
+                type: string
+                description: Division headquarters
+              eroc:
+                type: string
+                description: EROC code
+
+    ReservoirsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        reservoirs:
+          type: array
+          items:
+            type: object
+            properties:
+              project-id:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  office-id:
+                    type: string
+              near-normal-storage:
+                type: number
+              normal-storage-period:
+                type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message

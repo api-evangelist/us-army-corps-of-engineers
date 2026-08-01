@@ -1,0 +1,26 @@
+{
+  "provider": "us-army-corps-of-engineers",
+  "sources": [
+    "us-army-corps-of-engineers-catalog-api-openapi.yml",
+    "us-army-corps-of-engineers-levels-api-openapi.yml",
+    "us-army-corps-of-engineers-locations-api-openapi.yml",
+    "us-army-corps-of-engineers-offices-api-openapi.yml",
+    "us-army-corps-of-engineers-ratings-api-openapi.yml",
+    "us-army-corps-of-engineers-reservoirs-api-openapi.yml",
+    "us-army-corps-of-engineers-timeseries-api-openapi.yml"
+  ],
+  "outputs": [
+    "us-army-corps-of-engineers-catalog-api-openapi.yml",
+    "us-army-corps-of-engineers-levels-api-openapi.yml",
+    "us-army-corps-of-engineers-locations-api-openapi.yml",
+    "us-army-corps-of-engineers-offices-api-openapi.yml",
+    "us-army-corps-of-engineers-ratings-api-openapi.yml",
+    "us-army-corps-of-engineers-reservoirs-api-openapi.yml",
+    "us-army-corps-of-engineers-timeseries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
