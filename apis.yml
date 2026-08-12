@@ -1,6 +1,9 @@
 aid: us-army-corps-of-engineers
 url: https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/apis.yml
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/USACE/cwms-data-api/blob/develop/LICENSE
   - type: AgenticAccess
     url: agentic-access/us-army-corps-of-engineers-agentic-access.yml
   - type: DomainSecurity
