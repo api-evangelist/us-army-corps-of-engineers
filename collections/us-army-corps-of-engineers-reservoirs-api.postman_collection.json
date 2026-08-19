@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "f9a1f52e-5a2e-484d-b981-4e41d225ae55",
+      "name": "Reservoirs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5ce3eb2-79eb-40e3-8352-9ed7f51e3e69",
+          "name": "Get Reservoir Projects",
+          "request": {
+            "name": "Get Reservoir Projects",
+            "description": {
+              "content": "Returns USACE reservoir project information, including pool data and storage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reservoirs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "project-id-like",
+                  "value": "<string>",
+                  "description": "Filter by project ID pattern"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4742e4c8-fde1-4eab-b25e-bf7f1e17e504",
+              "name": "List of reservoirs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reservoirs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project-id-like",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"reservoirs\": [\n    {\n      \"project-id\": {\n        \"name\": \"string\",\n        \"office-id\": \"string\"\n      },\n      \"near-normal-storage\": 1496.5238571754935,\n      \"normal-storage-period\": \"string\"\n    },\n    {\n      \"project-id\": {\n        \"name\": \"string\",\n        \"office-id\": \"string\"\n      },\n      \"near-normal-storage\": 4908.115044725943,\n      \"normal-storage-period\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cwms-data.usace.army.mil/cwms-data",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "06fb41c3-1760-4652-a6d7-deeef06a7cc5",
+    "name": "USACE CWMS Data Catalog Reservoirs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.\n\nContact Support:\n Name: USACE HEC",
+      "type": "text/plain"
+    }
+  }
+}

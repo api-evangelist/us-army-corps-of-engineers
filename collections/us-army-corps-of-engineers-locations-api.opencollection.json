@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data Catalog Locations API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/locations",
+            "params": [
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location names (pipe-delimited)"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office identifier"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for coordinate data (EN or SI)"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for elevation"
+              },
+              {
+                "name": "category-id",
+                "value": "",
+                "type": "query",
+                "description": "Location category filter"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern."
+        },
+        {
+          "info": {
+            "name": "Get Location by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/locations/:location-id",
+            "params": [
+              {
+                "name": "location-id",
+                "value": "",
+                "type": "path",
+                "description": "The location identifier"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Office that owns the location"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system (EN or SI)"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific CWMS location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data Catalog Levels API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Levels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Location Levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/levels",
+            "params": [
+              {
+                "name": "location-id-mask",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location ID pattern"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "Unit system"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Start time filter"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time filter"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves location levels (stage, elevation thresholds) for CWMS locations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

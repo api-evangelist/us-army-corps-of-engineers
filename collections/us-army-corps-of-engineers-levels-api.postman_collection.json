@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "98c08b7d-9de1-4884-8ea0-021fad7ce739",
+      "name": "Levels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "811136a7-0f32-43b8-8a35-452318133eaa",
+          "name": "Get Location Levels",
+          "request": {
+            "name": "Get Location Levels",
+            "description": {
+              "content": "Retrieves location levels (stage, elevation thresholds) for CWMS locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "levels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location-id-mask",
+                  "value": "<string>",
+                  "description": "Filter by location ID pattern"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin",
+                  "value": "<string>",
+                  "description": "Start time filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "End time filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18bfc9d2-330c-47eb-b592-62e18a96bfd7",
+              "name": "Location levels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "levels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location-id-mask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"location-levels\": [\n    {\n      \"location-level-id\": \"string\",\n      \"office-id\": \"string\",\n      \"constant-value\": 8566.260094439345,\n      \"level-units-id\": \"string\",\n      \"level-date\": \"string\",\n      \"level-comment\": \"string\"\n    },\n    {\n      \"location-level-id\": \"string\",\n      \"office-id\": \"string\",\n      \"constant-value\": 2955.6052264973077,\n      \"level-units-id\": \"string\",\n      \"level-date\": \"string\",\n      \"level-comment\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cwms-data.usace.army.mil/cwms-data",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4e88dc4-16b7-4fd3-9592-952a58b1f1f7",
+    "name": "USACE CWMS Data Catalog Levels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.\n\nContact Support:\n Name: USACE HEC",
+      "type": "text/plain"
+    }
+  }
+}

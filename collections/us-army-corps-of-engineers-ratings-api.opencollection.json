@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data Catalog Ratings API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ratings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/ratings",
+            "params": [
+              {
+                "name": "rating-id-mask",
+                "value": "",
+                "type": "query",
+                "description": "Filter by rating ID pattern"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Filter ratings effective after this date"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Filter ratings effective before this date"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieves rating tables used to convert measured values to derived values (e.g., stage to flow)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

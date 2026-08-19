@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data Catalog Timeseries API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Timeseries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Timeseries Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/timeseries",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Timeseries identifier (e.g., TULA.Flow.Inst.1Hour.0.CBT-RAW)"
+              },
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "The office that owns the timeseries"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query",
+                "description": "The units for the time series values"
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "The vertical datum for elevation timeseries"
+              },
+              {
+                "name": "begin",
+                "value": "",
+                "type": "query",
+                "description": "Start time in ISO 8601 format or milliseconds"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time in ISO 8601 format or milliseconds"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "Timezone for time formatting"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page cursor for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieves timeseries data from the CWMS database. Results can be filtered by office, location, and time range. Dates may be in ISO 8601 format or milliseconds since the Unix epoch."
+        },
+        {
+          "info": {
+            "name": "Get Timeseries Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/timeseries/catalog",
+            "params": [
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office identifier"
+              },
+              {
+                "name": "timeseries-id-like",
+                "value": "",
+                "type": "query",
+                "description": "Filter by timeseries ID pattern (supports SQL LIKE syntax)"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Number of catalog entries per page"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a catalog of available timeseries identifiers, optionally filtered by office and location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USACE CWMS Data Catalog Reservoirs API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reservoirs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reservoir Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cwms-data.usace.army.mil/cwms-data/reservoirs",
+            "params": [
+              {
+                "name": "office",
+                "value": "",
+                "type": "query",
+                "description": "Filter by office"
+              },
+              {
+                "name": "project-id-like",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project ID pattern"
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns USACE reservoir project information, including pool data and storage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

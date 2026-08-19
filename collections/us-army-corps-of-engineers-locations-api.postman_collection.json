@@ -1,0 +1,351 @@
+{
+  "item": [
+    {
+      "id": "ca59b63f-9777-4183-b164-3de4c955e125",
+      "name": "Locations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e91beb47-5355-45f3-b213-30b4fb129e22",
+          "name": "Get Locations",
+          "request": {
+            "name": "Get Locations",
+            "description": {
+              "content": "Returns a list of CWMS locations, optionally filtered by office, kind, and name pattern.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "Filter by location names (pipe-delimited)"
+                },
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "Filter by office identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system for coordinate data (EN or SI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum for elevation"
+                },
+                {
+                  "disabled": false,
+                  "key": "category-id",
+                  "value": "<string>",
+                  "description": "Location category filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "500",
+                  "description": "Records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "977a3122-b69a-4a89-a9fb-27991b22fc04",
+              "name": "List of locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "500"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"string\",\n  \"next-page\": \"string\",\n  \"total\": 114,\n  \"page-size\": 4850,\n  \"locations\": {\n    \"location\": [\n      {\n        \"name\": \"string\",\n        \"latitude\": 5546.086746299744,\n        \"longitude\": 7219.458064723343,\n        \"elevation\": 2208.6508703463346,\n        \"vertical-datum\": \"string\",\n        \"horizontal-datum\": \"string\",\n        \"public-name\": \"string\",\n        \"long-name\": \"string\",\n        \"description\": \"string\",\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"time-zone-name\": \"string\",\n        \"county-name\": \"string\",\n        \"state-initial\": \"string\",\n        \"active\": true,\n        \"office-id\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"latitude\": 4279.112040843453,\n        \"longitude\": 1305.128306586001,\n        \"elevation\": 662.9704034135353,\n        \"vertical-datum\": \"string\",\n        \"horizontal-datum\": \"string\",\n        \"public-name\": \"string\",\n        \"long-name\": \"string\",\n        \"description\": \"string\",\n        \"kind\": \"string\",\n        \"type\": \"string\",\n        \"time-zone-name\": \"string\",\n        \"county-name\": \"string\",\n        \"state-initial\": \"string\",\n        \"active\": false,\n        \"office-id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29d3c4ef-0a0f-40ee-9aaf-585176a8c9b0",
+          "name": "Get Location by ID",
+          "request": {
+            "name": "Get Location by ID",
+            "description": {
+              "content": "Returns details for a specific CWMS location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations",
+                ":location-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "office",
+                  "value": "<string>",
+                  "description": "(Required) Office that owns the location"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>",
+                  "description": "Unit system (EN or SI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location-id",
+                  "description": "(Required) The location identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49a6cf33-e5bf-4d00-afd2-0b83c2b4880a",
+              "name": "Location details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations",
+                    ":location-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location-id",
+                      "description": "(Required) The location identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"latitude\": 9227.953810817173,\n  \"longitude\": 8683.810386138746,\n  \"elevation\": 48.75420488091198,\n  \"vertical-datum\": \"string\",\n  \"horizontal-datum\": \"string\",\n  \"public-name\": \"string\",\n  \"long-name\": \"string\",\n  \"description\": \"string\",\n  \"kind\": \"string\",\n  \"type\": \"string\",\n  \"time-zone-name\": \"string\",\n  \"county-name\": \"string\",\n  \"state-initial\": \"string\",\n  \"active\": false,\n  \"office-id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fa24713-405a-4267-af2b-49d3453f85ed",
+              "name": "Location not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations",
+                    ":location-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "office",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location-id",
+                      "description": "(Required) The location identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 5265,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cwms-data.usace.army.mil/cwms-data",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "034cdd2f-7629-4de0-9683-4978fe6f6121",
+    "name": "USACE CWMS Data Catalog Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.\n\nContact Support:\n Name: USACE HEC",
+      "type": "text/plain"
+    }
+  }
+}

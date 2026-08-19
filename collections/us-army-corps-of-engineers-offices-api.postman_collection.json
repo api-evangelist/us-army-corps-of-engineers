@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "efc18a3f-4248-4c39-bf36-9c220e73bd62",
+      "name": "Offices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa355353-7af8-4776-b27c-60e4e365e1b4",
+          "name": "Get Offices",
+          "request": {
+            "name": "Get Offices",
+            "description": {
+              "content": "Returns a list of USACE district offices in the CWMS system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f5e1631-fb75-4f0b-9f08-fbb01af9ada9",
+              "name": "List of USACE offices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offices\": [\n    {\n      \"name\": \"string\",\n      \"long-name\": \"string\",\n      \"headquarters-region\": \"string\",\n      \"eroc\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"long-name\": \"string\",\n      \"headquarters-region\": \"string\",\n      \"eroc\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cwms-data.usace.army.mil/cwms-data",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8740636f-dacb-4269-bc91-41b39be77634",
+    "name": "USACE CWMS Data Catalog Offices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Corps Water Management System (CWMS) Data API (CDA) is a RESTful API that enables secure data exchange for publicly available USACE water management data. The API provides access to timeseries data, location information, ratings, reservoirs, levels, and other water resource data maintained by the US Army Corps of Engineers.\n\nContact Support:\n Name: USACE HEC",
+      "type": "text/plain"
+    }
+  }
+}
