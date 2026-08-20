@@ -15,6 +15,12 @@ apis:
   name: USACE National Inventory of Dams API
   tags:
   - Dams
+  - Federal-Government
+  - Water Infrastructure
+  - Safety
+  - Geospatial Data
+  tags_raw:
+  - Dams
   - Federal Government
   - Water Infrastructure
   - Safety
@@ -35,6 +41,12 @@ apis:
 - aid: us-army-corps-of-engineers:usace-open-data
   name: USACE Open Data
   tags:
+  - Open Data
+  - Federal-Government
+  - Geospatial Data
+  - Water Resources
+  - Infrastructure
+  tags_raw:
   - Open Data
   - Federal Government
   - Geospatial Data
@@ -222,6 +234,8 @@ apis:
   humanURL: https://cwms-data.usace.army.mil/cwms-data/
   baseURL: https://cwms-data.usace.army.mil/cwms-data
   tags:
+  - Time Series
+  tags_raw:
   - Timeseries
   properties:
   - type: OpenAPI
@@ -245,6 +259,13 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
 name: US Army Corps of Engineers
 tags:
+  - Water Resources
+  - Federal-Government
+  - Military Engineering
+  - Infrastructure
+  - Open Data
+  - Geospatial Data
+tags_raw:
   - Water Resources
   - Federal Government
   - Military Engineering
