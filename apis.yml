@@ -1,6 +1,12 @@
 aid: us-army-corps-of-engineers
 url: https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/apis.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/USACE/cwms-data-api/issues
+  - type: Releases
+    url: https://github.com/USACE/cwms-data-api/releases
+  - type: ContributionGuide
+    url: https://github.com/USACE/cwms-data-api/blob/develop/CONTRIBUTING.md
   - type: License
     name: MIT
     url: https://github.com/USACE/cwms-data-api/blob/develop/LICENSE
@@ -273,6 +279,19 @@ tags_raw:
   - Open Data
   - Geospatial Data
 kind: contract
+deliveryModel:
+  model: self-hosted
+  license: MIT
+  open_source: true
+  commercial: false
+  callable_host: true
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
