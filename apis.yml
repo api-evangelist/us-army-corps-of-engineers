@@ -234,18 +234,16 @@ apis:
   - type: JSONLDContext
     url: >-
       https://raw.githubusercontent.com/api-evangelist/us-army-corps-of-engineers/refs/heads/main/json-ld/us-army-corps-of-engineers-context.jsonld
-- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-timeseries-api
-  name: US Army Corps of Engineers Timeseries API
-  description: The Timeseries API from US Army Corps of Engineers — 2 operation(s) for timeseries.
-  humanURL: https://cwms-data.usace.army.mil/cwms-data/
+- aid: us-army-corps-of-engineers:us-army-corps-of-engineers-time-series-api
+  name: US Army Corps of Engineers Time Series API
+  description: The Time Series API from US Army Corps of Engineers — 2 operation(s) for time series.
+  humanURL: https://nid.sec.usace.army.mil/
   baseURL: https://cwms-data.usace.army.mil/cwms-data
   tags:
   - Time Series
-  tags_raw:
-  - Timeseries
   properties:
   - type: OpenAPI
-    url: openapi/us-army-corps-of-engineers-timeseries-api-openapi.yml
+    url: openapi/us-army-corps-of-engineers-time-series-api-openapi.yml
   - type: Documentation
     url: https://cwms-data.usace.army.mil/cwms-data/
   - type: SwaggerUI
