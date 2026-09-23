@@ -1,13 +1,7 @@
 {
   "provider": "us-army-corps-of-engineers",
   "sources": [
-    "us-army-corps-of-engineers-catalog-api-openapi.yml",
-    "us-army-corps-of-engineers-levels-api-openapi.yml",
-    "us-army-corps-of-engineers-locations-api-openapi.yml",
-    "us-army-corps-of-engineers-offices-api-openapi.yml",
-    "us-army-corps-of-engineers-ratings-api-openapi.yml",
-    "us-army-corps-of-engineers-reservoirs-api-openapi.yml",
-    "us-army-corps-of-engineers-timeseries-api-openapi.yml"
+    "_original/usace-cwms-data-openapi.yml"
   ],
   "outputs": [
     "us-army-corps-of-engineers-catalog-api-openapi.yml",
@@ -18,9 +12,31 @@
     "us-army-corps-of-engineers-reservoirs-api-openapi.yml",
     "us-army-corps-of-engineers-timeseries-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "usace-cwms-data-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "usace-cwms-data-openapi.yml: declared missing tag: Catalog",
+    "usace-cwms-data-openapi.yml: declared missing tag: Levels",
+    "usace-cwms-data-openapi.yml: declared missing tag: Locations",
+    "usace-cwms-data-openapi.yml: declared missing tag: Offices",
+    "usace-cwms-data-openapi.yml: declared missing tag: Ratings",
+    "usace-cwms-data-openapi.yml: declared missing tag: Reservoirs",
+    "usace-cwms-data-openapi.yml: declared missing tag: Timeseries",
+    "superseded outputs removed: us-army-corps-of-engineers-time-series-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 9 total)"
+  ],
+  "skipped": [
+    "us-army-corps-of-engineers-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-levels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-offices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-ratings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-reservoirs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-corps-of-engineers-time-series-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
