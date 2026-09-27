@@ -149,44 +149,6 @@ paths:
                 $ref: '#/components/schemas/CatalogResponse'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        message:
-          type: string
-          description: Error message
-    CatalogResponse:
-      type: object
-      description: Paginated catalog of available data items
-      properties:
-        page:
-          type: string
-          description: Current page cursor
-        next-page:
-          type: string
-          description: Next page cursor
-        total:
-          type: integer
-          description: Total number of entries
-        page-size:
-          type: integer
-          description: Records per page
-        entries:
-          type: array
-          items:
-            type: object
-            properties:
-              office:
-                type: string
-              name:
-                type: string
-              units-available:
-                type: array
-                items:
-                  type: string
     TimeseriesResponse:
       type: object
       description: Paginated response containing timeseries data values
@@ -221,3 +183,41 @@ components:
         next-page:
           type: string
           description: Next page cursor for pagination
+    CatalogResponse:
+      type: object
+      description: Paginated catalog of available data items
+      properties:
+        page:
+          type: string
+          description: Current page cursor
+        next-page:
+          type: string
+          description: Next page cursor
+        total:
+          type: integer
+          description: Total number of entries
+        page-size:
+          type: integer
+          description: Records per page
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              office:
+                type: string
+              name:
+                type: string
+              units-available:
+                type: array
+                items:
+                  type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message

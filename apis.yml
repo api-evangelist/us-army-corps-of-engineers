@@ -21,7 +21,7 @@ apis:
   name: USACE National Inventory of Dams API
   tags:
   - Dams
-  - Federal-Government
+  - Federal Government
   - Water Infrastructure
   - Safety
   - Geospatial Data
@@ -31,6 +31,7 @@ apis:
   - Water Infrastructure
   - Safety
   - Geospatial Data
+  - Federal-Government
   humanURL: https://nid.sec.usace.army.mil/
   properties:
   - url: https://nid.sec.usace.army.mil/
@@ -48,7 +49,7 @@ apis:
   name: USACE Open Data
   tags:
   - Open Data
-  - Federal-Government
+  - Federal Government
   - Geospatial Data
   - Water Resources
   - Infrastructure
@@ -58,6 +59,7 @@ apis:
   - Geospatial Data
   - Water Resources
   - Infrastructure
+  - Federal-Government
   humanURL: https://www.usace.army.mil/open/
   properties:
   - url: https://www.usace.army.mil/open/
@@ -266,7 +268,7 @@ apis:
 name: US Army Corps of Engineers
 tags:
   - Water Resources
-  - Federal-Government
+  - Federal Government
   - Military Engineering
   - Infrastructure
   - Open Data
@@ -278,6 +280,7 @@ tags_raw:
   - Infrastructure
   - Open Data
   - Geospatial Data
+  - Federal-Government
 kind: contract
 deliveryModel:
   model: self-hosted

@@ -182,15 +182,6 @@ components:
         office-id:
           type: string
           description: Office that owns this location
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        message:
-          type: string
-          description: Error message
     LocationsResponse:
       type: object
       properties:
@@ -209,3 +200,12 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Location'
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message
