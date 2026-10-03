@@ -128,6 +128,15 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message
     Location:
       type: object
       description: A CWMS monitored location
@@ -200,12 +209,3 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Location'
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        message:
-          type: string
-          description: Error message
