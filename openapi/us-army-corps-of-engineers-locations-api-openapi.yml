@@ -128,6 +128,24 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    LocationsResponse:
+      type: object
+      properties:
+        page:
+          type: string
+        next-page:
+          type: string
+        total:
+          type: integer
+        page-size:
+          type: integer
+        locations:
+          type: object
+          properties:
+            location:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'
     Location:
       type: object
       description: A CWMS monitored location
@@ -182,24 +200,6 @@ components:
         office-id:
           type: string
           description: Office that owns this location
-    LocationsResponse:
-      type: object
-      properties:
-        page:
-          type: string
-        next-page:
-          type: string
-        total:
-          type: integer
-        page-size:
-          type: integer
-        locations:
-          type: object
-          properties:
-            location:
-              type: array
-              items:
-                $ref: '#/components/schemas/Location'
     Error:
       type: object
       properties:
